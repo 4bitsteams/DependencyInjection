@@ -1,0 +1,29 @@
+﻿@using DependencyInjection.Services
+@using Microsoft.Extensions.DependencyInjection
+@model DIModel
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@*@inject ISingletonService SingletonService
+@inject IScopedService ScopedService
+@inject ITraisientService TraisientService*@
+
+@inject IServiceProvider ServiceProvider
+
+@{ 
+    var SingletonService = ServiceProvider.GetRequiredService<ISingletonService>();
+    var ScopedService = ServiceProvider.GetRequiredService<IScopedService>();
+    var TraisientService = ServiceProvider.GetRequiredService<ITraisientService>();
+}
+
+<h1>Index</h1>
+
+<h2>@Model.SingletonTime</h2>
+<h2>@SingletonService.Time</h2>
+<h2>@Model.ScopedTime</h2>
+<h2>@ScopedService.Time</h2>
+<h2>@Model.TransientTime</h2>
+<h2>@TraisientService.Time</h2>
+
