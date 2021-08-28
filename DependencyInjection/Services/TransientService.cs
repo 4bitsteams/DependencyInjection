@@ -5,11 +5,11 @@ using System.Threading.Tasks;
 
 namespace DependencyInjection.Services
 {
-    public class TTraisientService : ITraisientService
+    public class TraisientService : ITraisientService
     {
         public string Time { get; set; }
 
-        public TTraisientService()
+        public TraisientService()
         {
             Time = DateTime.Now.ToString("HH:mm:ss.ffffff");
         }
