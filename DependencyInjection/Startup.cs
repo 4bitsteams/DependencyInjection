@@ -25,9 +25,13 @@ namespace DependencyInjection
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
-            services.AddSingleton<ISingletonService, SingletonService>();
+            //services.AddSingleton<ISingletonService, SingletonService>();
+            services.AddSingleton<ISingletonService, SingletonService>((serviceProvider)=> {
+                return new SingletonService();
+            });
             services.AddScoped<IScopedService, ScopedService>();
             services.AddTransient<ITraisientService, TraisientService>();
+            services.AddHostedService<DIHostedService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
